@@ -84,6 +84,28 @@ class Mapping extends Component {
      this.setState({ markers });
    }
 
+   handlePlacesChanged() {
+    console.log('handlePlacesChanged');
+    console.log(this);
+    const places = this.refs.searchBox.getPlaces();
+    const markers = [];
+
+    // Add a marker for each place returned from search bar
+    places.forEach(function (place) {
+      markers.push({
+        position: place.geometry.location,
+      });
+    });
+
+    // Set markers; set map center to first search result
+    const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
+
+    this.setState({
+      center: mapCenter,
+      markers,
+    });
+  }
+
   render () {
     return (
      <GoogleMapLoader
@@ -115,6 +137,8 @@ class Mapping extends Component {
             controlPosition={google.maps.ControlPosition.TOP_LEFT}
             placeholder="Customized your placeholder"
             style={SearchBoxModule.inputStyle}
+            ref="searchBox"
+            onPlacesChanged={this.handlePlacesChanged.bind(this)}
           />
         </GoogleMap>
       } // googleMapElement
