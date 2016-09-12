@@ -1,7 +1,8 @@
 import {default as React, Component} from 'react';
 import {default as update} from 'react-addons-update';
 import {default as canUseDOM} from 'can-use-dom';
-import {default as _} from 'lodash';  import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
+import {default as _} from 'lodash';  
+import {GoogleMapLoader, GoogleMap, Marker, SearchBox} from 'react-google-maps';
 import {triggerEvent} from 'react-google-maps/lib/utils';
 
 
@@ -109,6 +110,11 @@ class Mapping extends Component {
               onRightclick={this.handleMarkerRightclick.bind(this, index)} />
               );
           })}
+
+          <SearchBox
+            controlPosition={google.maps.ControlPosition.TOP_LEFT}
+            placeholder="Customized your placeholder"
+          />
         </GoogleMap>
       } // googleMapElement
     /> // GoogleMapLoad
