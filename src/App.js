@@ -4,6 +4,7 @@ import {default as canUseDOM} from 'can-use-dom';
 import {default as _} from 'lodash';  
 import {GoogleMapLoader, GoogleMap, Marker, SearchBox} from 'react-google-maps';
 import {triggerEvent} from 'react-google-maps/lib/utils';
+import SearchBoxModule from './SearchBoxModule.js';
 
 
 
@@ -15,7 +16,6 @@ class Mapping extends Component {
        lat: 40.3,
        lng: -105.65,
      },
-     key: 'Taiwan',
      defaultAnimation: 2
    }]
   };
@@ -114,6 +114,7 @@ class Mapping extends Component {
           <SearchBox
             controlPosition={google.maps.ControlPosition.TOP_LEFT}
             placeholder="Customized your placeholder"
+            style={SearchBoxModule.inputStyle}
           />
         </GoogleMap>
       } // googleMapElement
