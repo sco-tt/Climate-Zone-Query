@@ -11,8 +11,8 @@ class Mapping extends Component {
   state = {
    markers: [{
      position: {
-       lat: 25.0112183,
-       lng: 121.52067570000001,
+       lat: 40.3,
+       lng: -105.65,
      },
      key: 'Taiwan',
      defaultAnimation: 2
@@ -98,8 +98,8 @@ class Mapping extends Component {
       googleMapElement={
         <GoogleMap
           ref={(map) => (this._googleMapComponent = map) && console.log(map.getZoom())}
-          defaultZoom={3}
-          defaultCenter={{lat: -25.363882, lng: 131.044922}}
+          defaultZoom={7}
+          defaultCenter={{lat: this.state.markers[0].position.lat, lng: this.state.markers[0].position.lng}}
           onClick={this.handleMapClick}>
         
           {this.state.markers.map((marker, index) => {
