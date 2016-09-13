@@ -10,14 +10,14 @@ import SearchBoxModule from './SearchBoxModule.js';
 
 class Mapping extends Component {
 
+  static mapCenter = {
+    lat: 47.6205588,
+    lng: -122.3212725,
+  }
+
   state = {
-   markers: [{
-     position: {
-       lat: 40.3,
-       lng: -105.65,
-     },
-     defaultAnimation: 2
-   }]
+    center: Mapping.mapCenter,
+    markers: []
   };
 
   constructor (props, context) {
@@ -85,8 +85,6 @@ class Mapping extends Component {
    }
 
    handlePlacesChanged() {
-    console.log('handlePlacesChanged');
-    console.log(this);
     const places = this.refs.searchBox.getPlaces();
     const markers = [];
 
@@ -99,8 +97,8 @@ class Mapping extends Component {
 
     // Set markers; set map center to first search result
     const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
-
-    this.setState({
+console.log(places[0].geometry.location);
+     this.setState({
       center: mapCenter,
       markers,
     });
@@ -122,7 +120,7 @@ class Mapping extends Component {
         <GoogleMap
           ref={(map) => (this._googleMapComponent = map) && console.log(map.getZoom())}
           defaultZoom={7}
-          defaultCenter={{lat: this.state.markers[0].position.lat, lng: this.state.markers[0].position.lng}}
+          center={this.state.center}
           onClick={this.handleMapClick}>
         
           {this.state.markers.map((marker, index) => {
