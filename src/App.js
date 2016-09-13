@@ -5,6 +5,7 @@ import {default as _} from 'lodash';
 import {GoogleMapLoader, GoogleMap, Marker, SearchBox} from 'react-google-maps';
 import {triggerEvent} from 'react-google-maps/lib/utils';
 import SearchBoxModule from './SearchBoxModule.js';
+import ClimateZoneLookup from './ClimateZoneLookup.js';
 
 
 
@@ -15,14 +16,15 @@ class Mapping extends Component {
     lng: -122.3212725,
   }
 
-  state = {
-    center: Mapping.mapCenter,
-    markers: []
-  };
-
   constructor (props, context) {
-   super(props, context);
-   this.handleWindowResize = _.throttle(this.handleWindowResize, 500);
+    super(props, context);
+    this.handleWindowResize = _.throttle(this.handleWindowResize, 500);
+    
+    this.state = {
+      center: Mapping.mapCenter,
+      markers: [],
+      zone: null
+    };
   }
 
   componentDidMount () {
@@ -112,7 +114,7 @@ console.log(places[0].geometry.location);
         {...this.props}
         style={{
           height: '400px',
-          width: '400px'
+          width: '100%'
         }}
         />
       }
@@ -137,6 +139,11 @@ console.log(places[0].geometry.location);
             style={SearchBoxModule.inputStyle}
             ref="searchBox"
             onPlacesChanged={this.handlePlacesChanged.bind(this)}
+          />
+          <ClimateZoneLookup
+            name="Climate Zone"
+            zone={this.state.zone}
+            style={ClimateZoneLookup.style}
           />
         </GoogleMap>
       } // googleMapElement
