@@ -99,15 +99,18 @@ class Mapping extends Component {
 
     // Set markers; set map center to first search result
     const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
-console.log(places[0].geometry.location);
+    const address = places[0].formatted_address;
+    console.log(address);
      this.setState({
       center: mapCenter,
       markers,
+      address
     });
   }
 
   render () {
     return (
+      <div>
      <GoogleMapLoader
        containerElement={
         <div
@@ -140,14 +143,17 @@ console.log(places[0].geometry.location);
             ref="searchBox"
             onPlacesChanged={this.handlePlacesChanged.bind(this)}
           />
-          <ClimateZoneLookup
-            name="Climate Zone"
-            zone={this.state.zone}
-            style={ClimateZoneLookup.style}
-          />
+
         </GoogleMap>
       } // googleMapElement
-    /> // GoogleMapLoad
+    /> 
+    <ClimateZoneLookup
+      name="Climate Zone"
+      zone={this.state.zone}
+      style={ClimateZoneLookup.style}
+      address={this.state.address}
+    />
+  </div>
     ); // return
   } // render
 } //
