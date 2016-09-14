@@ -25,6 +25,9 @@ class Mapping extends Component {
       markers: [],
       zone: null
     };
+
+    this.handleSetZone = this.handleSetZone.bind(this);
+
   }
 
   componentDidMount () {
@@ -108,6 +111,14 @@ class Mapping extends Component {
     });
   }
 
+  handleSetZone(zone) {
+    console.log(this);
+    console.log('handleSetZone');
+     this.setState({
+      zone: zone
+    });
+  }
+
   render () {
     return (
       <div>
@@ -150,6 +161,7 @@ class Mapping extends Component {
     <ClimateZoneLookup
       name="Climate Zone"
       zone={this.state.zone}
+      setZone ={this.handleSetZone} 
       style={ClimateZoneLookup.style}
       address={this.state.address}
     />

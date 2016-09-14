@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 class ClimateZoneLookup extends Component {
-   static style = {
+  static style = {
     'color': `red`
   }
   componentDidUpdate() {
@@ -17,7 +17,10 @@ class ClimateZoneLookup extends Component {
         console.log(response);
         const lat = response.data.results[0].geometry.location.lat;
         const lng = response.data.results[0].geometry.location.lng;
-        const postion = [lat, lng];
+        const postion = {
+          raw: [lat, lng],
+          rounded: []
+        };
         this.round(postion);
 
       })
@@ -27,7 +30,7 @@ class ClimateZoneLookup extends Component {
   }
 
   round(postion) {
-      postion.forEach((coord) => {
+      postion.raw.forEach((coord) => {
         console.log(coord);
         let decimal = (coord % 1);
           if (decimal >= 0 && decimal <= 0.5) {
@@ -42,17 +45,30 @@ class ClimateZoneLookup extends Component {
           if (decimal > -1.00 && decimal < -0.5) {
               coord += (-0.75 - decimal);
          }
-         postion.push(coord);
+         postion.rounded.push(coord);
       });
-      console.log(postion);
+      this.lookup(postion);
         
   }
 
-  lookup(coord) {
-    const query = "SELECT 'Cls' FROM " +
-                 "1GQfBT-PXojUbIZP7_tkILYKNjHaQjYqop9gkosho" +
-                 " WHERE 'Lat' = '" + lat + "' AND Lon = '" + lng + "'";
+  lookup(postion) {
+    const query = `SELECT 'Cls' FROM 1GQfBT-PXojUbIZP7_tkILYKNjHaQjYqop9gkosho 
+                   WHERE 'Lat' = ${postion.rounded[0]} 
+                   AND 'Lon' = ${postion.rounded[1]}`;
+    const encodedQuery = encodeURIComponent(query);
 
+    const url = ["https://www.googleapis.com/fusiontables/v1/query"];
+    url.push("?sql=" + encodedQuery);
+    url.push("&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ");
+
+    axios.get(url.join(''))
+      .then((response) => {
+        const tempZone = response.data.rows[0].toString();
+        this.props.setZone(tempZone);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
