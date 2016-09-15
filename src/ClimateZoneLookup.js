@@ -6,6 +6,37 @@ class ClimateZoneLookup extends Component {
   static style = {
     'color': `red`
   }
+  static zoneDescriptsion = {
+    Af: "Tropical rainforest",
+    Am: "Tropical monsoon",
+    Aw: "Tropical wet and dry or savanna",
+    As: "Tropical wet and dry or savanna ('summer' dry season)",
+    BWh: "Subtropical desert",
+    BSh: "Subtropical steppe",
+    BWk: "Mid-latitude desert",
+    BSk: "Mid-latitude steppe",
+    Csa: "Mediterranean, hot summer",
+    Csb: "Mediterranean, warm summer",
+    Cfa: "Humid subtropical, no dry season",
+    Cwa: "Humid subtropical, dry winter",
+    Cwb: "Temperate highland tropical climate with dry winters",
+    Cwc: "Temperate highland tropical climate with dry winters",
+    Cfb: "Marine west coast, warm summer",
+    Cfc: "Marine west coast, cool summer",
+    Dfa: "Humid continental, no dry season, hot summer",
+    Dfb: "Humid continental, no dry season, warm summer",
+    Dwa: "Humid continental, severe dry winter, hot summer",
+    Dwb: "Humid continental, severe dry winter, warm summer",
+    Dsb: "Humid continental, dry warm summer",
+    Dfc: "Subartic, severe winter, no dry season, cool summer",
+    Dfd: "Subartic, severe very cold winter, no dry season, cool summer",
+    Dwc: "Subartic, dry winter, cool summer",
+    Dsc: "Subartic, subalpine",
+    Dwd: "Subartic, very cold and dry winter, cool summer",
+    ET: "Tundra",
+    EF: "Ice Cap"
+  }
+
   componentDidUpdate() {
     this.geocode();
   }
