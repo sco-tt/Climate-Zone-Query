@@ -57,7 +57,7 @@ class ClimateZoneLookup extends Component {
                    AND 'Lon' = ${postion.rounded[1]}`;
     const encodedQuery = encodeURIComponent(query);
 
-    const url = ["https://www.googleapis.com/fusiontables/v1/query"];
+    const url = ["https://www.googleapis.com/fusiontables/v2/query"];
     url.push("?sql=" + encodedQuery);
     url.push("&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ");
 
