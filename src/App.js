@@ -23,7 +23,10 @@ class Mapping extends Component {
     this.state = {
       center: Mapping.mapCenter,
       markers: [],
-      zone: null
+      zone: {
+        zoneCode: null,
+        zoneDesc: null
+      }
     };
 
     this.handleSetZone = this.handleSetZone.bind(this);
@@ -111,11 +114,14 @@ class Mapping extends Component {
     });
   }
 
-  handleSetZone(zone) {
+  handleSetZone(zone, desc) {
     console.log(this);
     console.log('handleSetZone');
      this.setState({
-      zone: zone
+      zone: {
+        zoneCode: zone,
+        zoneDesc: desc
+      }
     });
   }
 
@@ -160,9 +166,11 @@ class Mapping extends Component {
     /> 
     <ClimateZoneLookup
       name="Climate Zone"
-      zone={this.state.zone}
+      zoneCode={this.state.zone.zoneCode}
+      zoneDesc={this.state.zone.zoneDesc}
       setZone ={this.handleSetZone} 
       style={ClimateZoneLookup.style}
+      zoneList={ClimateZoneLookup.zoneList}
       address={this.state.address}
     />
   </div>
