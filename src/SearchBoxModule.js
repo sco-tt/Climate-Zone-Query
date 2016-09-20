@@ -13,9 +13,7 @@ class SearchBoxModule {
     'textOverflow': `ellipses`,
     'width': `400px`,
   }
-  handlePlacesChanged() {
-    //this.props.placesChanged();
-  }
+  
   render() {
     return;
   }

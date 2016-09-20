@@ -20,6 +20,7 @@ class Mapping extends Component {
     super(props, context);
     this.handleWindowResize = _.throttle(this.handleWindowResize, 500);
     
+    // Set the initial state because we need a map center initially
     this.state = {
       center: Mapping.mapCenter,
       markers: [],
@@ -48,7 +49,6 @@ class Mapping extends Component {
   }
 
   handleWindowResize () {
-    console.log('handleWindowResize', this._googleMapComponent);
     triggerEvent(this._googleMapComponent, 'resize');
   }
 
@@ -106,8 +106,7 @@ class Mapping extends Component {
     // Set markers; set map center to first search result
     const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
     const address = places[0].formatted_address;
-    console.log(address);
-     this.setState({
+    this.setState({
       center: mapCenter,
       markers,
       address
@@ -115,8 +114,6 @@ class Mapping extends Component {
   }
 
   handleSetZone(zone, desc) {
-    console.log(this);
-    console.log('handleSetZone');
      this.setState({
       zone: {
         zoneCode: zone,
@@ -140,7 +137,7 @@ class Mapping extends Component {
       }
       googleMapElement={
         <GoogleMap
-          ref={(map) => (this._googleMapComponent = map) && console.log(map.getZoom())}
+          ref={(map) => (this._googleMapComponent = map)}
           defaultZoom={7}
           center={this.state.center}
           onClick={this.handleMapClick}>
@@ -155,7 +152,7 @@ class Mapping extends Component {
 
           <SearchBox
             controlPosition={google.maps.ControlPosition.TOP_LEFT}
-            placeholder="Customized your placeholder"
+            placeholder="Enter a location"
             style={SearchBoxModule.inputStyle}
             ref="searchBox"
             onPlacesChanged={this.handlePlacesChanged.bind(this)}
@@ -168,7 +165,7 @@ class Mapping extends Component {
       name="Climate Zone"
       zoneCode={this.state.zone.zoneCode}
       zoneDesc={this.state.zone.zoneDesc}
-      setZone ={this.handleSetZone} 
+      setZone={this.handleSetZone} 
       style={ClimateZoneLookup.style}
       zoneList={ClimateZoneLookup.zoneList}
       address={this.state.address}

@@ -43,11 +43,9 @@ class ClimateZoneLookup extends Component {
     }
   }
   geocode(address) {
-    console.log('geocode');
     const queryAddress = address;
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${queryAddress}&key=AIzaSyB8eYNd6em4gm8uLs8updwtSMnwR5X-EQQ`)
       .then((response) => {
-        console.log(response);
         const lat = response.data.results[0].geometry.location.lat;
         const lng = response.data.results[0].geometry.location.lng;
         const postion = {
@@ -64,7 +62,6 @@ class ClimateZoneLookup extends Component {
 
   round(postion) {
       postion.raw.forEach((coord) => {
-        console.log(coord);
         let decimal = (coord % 1);
           if (decimal >= 0 && decimal <= 0.5) {
               coord += (0.25 - decimal);
@@ -88,6 +85,7 @@ class ClimateZoneLookup extends Component {
     const query = `SELECT 'Cls' FROM 1GQfBT-PXojUbIZP7_tkILYKNjHaQjYqop9gkosho 
                    WHERE 'Lat' = ${postion.rounded[0]} 
                    AND 'Lon' = ${postion.rounded[1]}`;
+    
     const encodedQuery = encodeURIComponent(query);
 
     const url = ["https://www.googleapis.com/fusiontables/v2/query"];
