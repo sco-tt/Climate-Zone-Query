@@ -37,12 +37,14 @@ class ClimateZoneLookup extends Component {
     EF: "Ice Cap"
   }
 
-  componentDidUpdate() {
-    this.geocode();
+  componentWillReceiveProps(nextProps) {
+    if (this.props.address !== nextProps.address) {
+      this.geocode(nextProps.address)
+    }
   }
-  geocode() {
+  geocode(address) {
     console.log('geocode');
-    const queryAddress = this.props.address
+    const queryAddress = address;
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${queryAddress}&key=AIzaSyB8eYNd6em4gm8uLs8updwtSMnwR5X-EQQ`)
       .then((response) => {
         console.log(response);
