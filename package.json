@@ -22,5 +22,9 @@
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
   },
-  "homepage": "http://sco-tt.github.io/Climate-Zone-Query"
+  "homepage": "http://sco-tt.github.io/Climate-Zone-Query",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sco-tt/Climate-Zone-Query.git"
+  }
 }
