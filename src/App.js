@@ -151,7 +151,15 @@ class Mapping extends Component {
           })}
 
           <SearchBox
-            controlPosition={google.maps.ControlPosition.TOP_LEFT}
+            /**
+             * Use global google object 'constants' (1) instead of google object 
+             * (google.maps.ControlPosition.TOP_LEFT) becuase 'google' object 
+             * returns undefined
+             *
+             * @link https://github.com/tomchentw/react-google-maps/issues/196
+             * 
+             */
+            controlPosition={1}
             placeholder="Enter a location"
             style={SearchBoxModule.inputStyle}
             ref="searchBox"
