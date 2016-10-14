@@ -140,7 +140,9 @@ class Mapping extends Component {
           ref={(map) => (this._googleMapComponent = map)}
           defaultZoom={7}
           center={this.state.center}
-          onClick={this.handleMapClick}>
+          onClick={this.handleMapClick}
+          mapTypeId={'terrain'}>
+
         
           {this.state.markers.map((marker, index) => {
             return (
