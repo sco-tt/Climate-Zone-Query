@@ -2,10 +2,11 @@ import {default as React, Component} from 'react';
 import {default as update} from 'react-addons-update';
 import {default as canUseDOM} from 'can-use-dom';
 import {default as _} from 'lodash';  
-import {GoogleMapLoader, GoogleMap, Marker, SearchBox} from 'react-google-maps';
+import {GoogleMapLoader, GoogleMap, Marker, SearchBox, KmlLayer} from 'react-google-maps';
 import {triggerEvent} from 'react-google-maps/lib/utils';
 import SearchBoxModule from './SearchBoxModule.js';
 import ClimateZoneLookup from './ClimateZoneLookup.js';
+import ToggleOverlay from './ToggleOverlay.js';
 
 
 
@@ -27,10 +28,12 @@ class Mapping extends Component {
       zone: {
         zoneCode: null,
         zoneDesc: null
-      }
+      },
+      overlay: null
     };
 
     this.handleSetZone = this.handleSetZone.bind(this);
+    this.handleSetOverlay= this.handleSetOverlay.bind(this);
 
   }
 
@@ -122,6 +125,14 @@ class Mapping extends Component {
     });
   }
 
+  handleSetOverlay() {
+    const newOverlayState = (this.state.overlay) ? null : 
+      'https://sco-tt.github.io/What-s-My-Climate-Zone/Koeppen-Geiger-GE.kmz';
+    this.setState({
+      overlay: newOverlayState
+    });
+  }
+
   render () {
     return (
       <div>
@@ -152,6 +163,9 @@ class Mapping extends Component {
               );
           })}
 
+    <KmlLayer
+      url={this.state.overlay}
+    />
           <SearchBox
             /**
              * Use global google object 'constants' (1) instead of google object 
@@ -168,7 +182,12 @@ class Mapping extends Component {
             onPlacesChanged={this.handlePlacesChanged.bind(this)}
           />
 
+        <ToggleOverlay
+         setOverlay={this.handleSetOverlay}>
+        </ToggleOverlay>
+
         </GoogleMap>
+
       } // googleMapElement
     /> 
     <ClimateZoneLookup
