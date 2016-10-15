@@ -163,9 +163,10 @@ class Mapping extends Component {
               );
           })}
 
-    <KmlLayer
-      url={this.state.overlay}
-    />
+          <KmlLayer
+            options={{preserveViewport: true}}
+            url={this.state.overlay}
+          />
           <SearchBox
             /**
              * Use global google object 'constants' (1) instead of google object 
