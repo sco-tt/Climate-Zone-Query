@@ -152,7 +152,8 @@ class Mapping extends Component {
           defaultZoom={7}
           center={this.state.center}
           onClick={this.handleMapClick}
-          mapTypeId={'terrain'}>
+          mapTypeId={'terrain'}
+          defaultOptions={{mapTypeControl: false}}>
 
         
           {this.state.markers.map((marker, index) => {

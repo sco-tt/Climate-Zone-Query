@@ -23,6 +23,7 @@
   to { transform: rotate(360deg); }
 }
 
-.climate-zone {
-  color: red;
+.toggle-button {
+  position: absolute;
+  z-index: 999999;
 }

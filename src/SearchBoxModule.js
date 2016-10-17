@@ -12,6 +12,7 @@ class SearchBoxModule {
     'padding': `0 12px`,
     'textOverflow': `ellipses`,
     'width': `400px`,
+    'max-width': `100%`
   }
   
   render() {

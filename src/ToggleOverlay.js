@@ -15,7 +15,7 @@ class ToggleOverlay extends Component {
 
   render() {
     return (
-      <button onClick={this._handleClick.bind(this)}>Toggle Overlay</button>
+      <button onClick={this._handleClick.bind(this)} className={"toggle-button"}>Toggle Overlay</button>
     );    
   }
 }
