@@ -1,5 +1,4 @@
 import {default as React, Component} from 'react';
-import {default as update} from 'react-addons-update';
 import {default as canUseDOM} from 'can-use-dom';
 import {default as _} from 'lodash';  
 import {GoogleMapLoader, GoogleMap, Marker, SearchBox, KmlLayer} from 'react-google-maps';
@@ -55,46 +54,6 @@ class Mapping extends Component {
   handleWindowResize () {
     triggerEvent(this._googleMapComponent, 'resize');
   }
-
-  /**
-   * This is called when you click on the map.
-   * Go and try click now.
-   */
-  handleMapClick (event) {
-    var {markers} = this.state;
-    markers = update(markers, {
-      $push: [
-      {
-        position: event.latLng,
-        defaultAnimation: 2,
-                  key: Date.now() // Add a key property for: http://fb.me/react-warning-keys
-                },
-                ],
-              });
-    this.setState({ markers });
-
-    if (3 === markers.length) {
-      this.props.toast(
-        'Right click on the marker to remove it',
-        'Also check the code!'
-        );
-    }
-  }
-
-  handleMarkerRightclick (index, event) {
-    /*
-     * All you modify is data, and the view is driven by data.
-     * This is so called data-driven-development. (And yes, it's now in
-     * web front end and even with google maps API.)
-     */
-     var {markers} = this.state;
-     markers = update(markers, {
-      $splice: [
-      [index, 1]
-      ],
-    });
-     this.setState({ markers });
-   }
 
    handlePlacesChanged() {
     const places = this.refs.searchBox.getPlaces();
@@ -159,11 +118,11 @@ class Mapping extends Component {
         >
 
         
-          {this.state.markers.map((marker, index) => {
+        {this.state.markers.map((marker, index) => {
             return (
               <Marker
               {...marker}
-              onRightclick={this.handleMarkerRightclick.bind(this, index)} />
+              key={index} />
               );
           })}
 
