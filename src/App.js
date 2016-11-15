@@ -29,7 +29,8 @@ class Mapping extends Component {
         zoneCode: null,
         zoneDesc: null
       },
-      overlay: null
+      overlay: null,
+      zoom: 3
     };
 
     this.handleSetZone = this.handleSetZone.bind(this);
@@ -112,7 +113,8 @@ class Mapping extends Component {
     this.setState({
       center: mapCenter,
       markers,
-      address
+      address,
+      zoom: 7
     });
   }
 
@@ -149,11 +151,12 @@ class Mapping extends Component {
       googleMapElement={
         <GoogleMap
           ref={(map) => (this._googleMapComponent = map)}
-          defaultZoom={7}
           center={this.state.center}
           onClick={this.handleMapClick}
           mapTypeId={'terrain'}
-          defaultOptions={{mapTypeControl: false}}>
+          defaultOptions={{mapTypeControl: false}}
+          zoom={this.state.zoom}
+        >
 
         
           {this.state.markers.map((marker, index) => {
