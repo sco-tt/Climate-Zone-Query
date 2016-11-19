@@ -25,6 +25,7 @@ class ToggleOverlay extends Component {
       </label>
     );
   }
+  
 }
 
 export default ToggleOverlay;

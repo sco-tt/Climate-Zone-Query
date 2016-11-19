@@ -3,9 +3,11 @@ import axios from 'axios';
 
 
 class ClimateZoneLookup extends Component {
+
   static style = {
     'color': `red`
   }
+
   static zoneList = {
     'Af': `Tropical rainforest`,
     'Am': `Tropical monsoon`,
@@ -42,6 +44,7 @@ class ClimateZoneLookup extends Component {
       this.geocode(nextProps.address)
     }
   }
+
   geocode(address) {
     const queryAddress = address;
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${queryAddress}&key=AIzaSyB8eYNd6em4gm8uLs8updwtSMnwR5X-EQQ`)
@@ -53,7 +56,6 @@ class ClimateZoneLookup extends Component {
           rounded: []
         };
         this.round(postion);
-
       })
       .catch((error) => {
         console.log(error);
@@ -61,24 +63,23 @@ class ClimateZoneLookup extends Component {
   }
 
   round(postion) {
-      postion.raw.forEach((coord) => {
-        let decimal = (coord % 1);
-          if (decimal >= 0 && decimal <= 0.5) {
-              coord += (0.25 - decimal);
-          }
-           if (decimal > 0.5 && decimal < 1) {
-              coord += (0.75 - decimal);
-          }
-          if (decimal >= -0.5 && decimal  < 0) {
-               coord += (-0.25 - decimal);
-           }
-          if (decimal > -1.00 && decimal < -0.5) {
-              coord += (-0.75 - decimal);
+    postion.raw.forEach((coord) => {
+      let decimal = (coord % 1);
+        if (decimal >= 0 && decimal <= 0.5) {
+          coord += (0.25 - decimal);
+        }
+         if (decimal > 0.5 && decimal < 1) {
+          coord += (0.75 - decimal);
+        }
+        if (decimal >= -0.5 && decimal  < 0) {
+           coord += (-0.25 - decimal);
          }
-         postion.rounded.push(coord);
-      });
-      this.lookup(postion);
-        
+        if (decimal > -1.00 && decimal < -0.5) {
+          coord += (-0.75 - decimal);
+       }
+       postion.rounded.push(coord);
+    });
+    this.lookup(postion); 
   }
 
   lookup(postion) {
@@ -88,9 +89,9 @@ class ClimateZoneLookup extends Component {
     
     const encodedQuery = encodeURIComponent(query);
 
-    const url = ["https://www.googleapis.com/fusiontables/v2/query"];
-    url.push("?sql=" + encodedQuery);
-    url.push("&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ");
+    const url = ['https://www.googleapis.com/fusiontables/v2/query'];
+    url.push('?sql=' + encodedQuery);
+    url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
 
     axios.get(url.join(''))
       .then((response) => {
@@ -112,6 +113,7 @@ class ClimateZoneLookup extends Component {
       </div>
     );
   }
+
 }
 
 export default ClimateZoneLookup
