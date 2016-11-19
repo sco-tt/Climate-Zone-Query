@@ -88,12 +88,9 @@ class ClimateZoneLookup extends Component {
                    AND 'Lon' = ${postion.rounded[1]}`;
     
     const encodedQuery = encodeURIComponent(query);
+    const url = `https://www.googleapis.com/fusiontables/v2/query?sql=${encodedQuery}&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ`
 
-    const url = ['https://www.googleapis.com/fusiontables/v2/query'];
-    url.push('?sql=' + encodedQuery);
-    url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
-
-    axios.get(url.join(''))
+    axios.get(url)
       .then((response) => {
         const tempZone = response.data.rows[0].toString();
         const tempDesc = this.props.zoneList[tempZone]
