@@ -19,7 +19,7 @@ class Mapping extends Component {
   constructor (props, context) {
     super(props, context);
     this.handleWindowResize = _.throttle(this.handleWindowResize, 500);
-    
+ 
     // Set the initial state because we need a map center initially
     this.state = {
       center: Mapping.mapCenter,
@@ -32,9 +32,9 @@ class Mapping extends Component {
       zoom: 3
     };
 
+    this.handleZoomChanged = this.handleZoomChanged.bind(this);
     this.handleSetZone = this.handleSetZone.bind(this);
     this.handleSetOverlay= this.handleSetOverlay.bind(this);
-
   }
 
   componentDidMount () {
@@ -50,12 +50,24 @@ class Mapping extends Component {
     }
     window.removeEventListener('resize', this.handleWindowResize);
   }
-
+  
+  /* Map Events */
   handleWindowResize () {
     triggerEvent(this._googleMapComponent, 'resize');
   }
 
-   handlePlacesChanged() {
+  handleZoomChanged() {
+    console.log('handleZoomChanged');
+    const nextZoom = this._googleMapComponent.getZoom();
+    if (nextZoom !== this.state.zoom) {
+      this.setState({
+        zoom: nextZoom,
+      });
+    }
+  }
+  /* App Events */
+
+  handlePlacesChanged() {
     const places = this.refs.searchBox.getPlaces();
     const markers = [];
 
@@ -90,7 +102,7 @@ class Mapping extends Component {
     const newOverlayState = (this.state.overlay) ? null : 
       'https://sco-tt.github.io/What-s-My-Climate-Zone/Koeppen-Geiger-GE.kmz';
     this.setState({
-      overlay: newOverlayState
+      overlay: newOverlayState,
     });
   }
 
@@ -115,6 +127,8 @@ class Mapping extends Component {
           mapTypeId={'terrain'}
           defaultOptions={{mapTypeControl: false}}
           zoom={this.state.zoom}
+          onMapMounted={this.handleMapMounted}
+          onZoomChanged={this.handleZoomChanged}
         >
 
         
