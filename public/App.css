@@ -22,6 +22,7 @@
 }
 .main {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.5em;
 }
 .header {
   background: #252525; 
@@ -91,6 +92,7 @@ h1 {
  */
 
 .row {
+  border-bottom: 2px solid #252525; 
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -116,6 +118,42 @@ h1 {
     height: 500px;
   }
   .data-area {
+    flex: 1;
+  }
+}
+/* Data Area*/
+.data-area {
+  paddgin: 0 1em;
+}
+.cz-toggle {
+  margin: 0 5px 0 0;
+}
+.climate-zone {
+  max-width: 90%;
+}
+.climate-zone__result-label {
+  font-weight: bold;
+}
+
+
+/* Bottom Area*/
+.bottomText {
+  padding: 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+.bottomText__faq {
+  flex: 0 0 100%;
+}
+.bottomText__link {
+  text-decoration: none;
+  background: #9a9a9a;
+  color: #fff;
+  padding: 2px 4px;
+}
+@media screen and (min-width: 768px) {
+  .bottomText__faq {
+    padding: 1em;
     flex: 1;
   }
 }
