@@ -6,6 +6,7 @@ import {triggerEvent} from 'react-google-maps/lib/utils';
 import SearchBoxModule from './SearchBoxModule.js';
 import ClimateZoneLookup from './ClimateZoneLookup.js';
 import ToggleOverlay from './ToggleOverlay.js';
+import Header from './Header.js';
 
 
 
@@ -13,7 +14,7 @@ class Mapping extends Component {
 
   static mapCenter = {
     lat: 47.6205588,
-    lng: -122.3212725,
+    lng: -2.3212725,
   }
 
   constructor (props, context) {
@@ -108,15 +109,15 @@ class Mapping extends Component {
 
   render () {
     return (
-      <div>
+    <div className="main">
+    <Header /> 
+    <div className="row">
+
      <GoogleMapLoader
        containerElement={
         <div
         {...this.props}
-        style={{
-          height: '400px',
-          width: '100%'
-        }}
+        className="map"
         />
       }
       googleMapElement={
@@ -140,10 +141,6 @@ class Mapping extends Component {
               );
           })}
 
-          <KmlLayer
-            options={{preserveViewport: true}}
-            url={this.state.overlay}
-          />
           <SearchBox
             /**
              * Use global google object 'constants' (1) instead of google object 
@@ -160,14 +157,23 @@ class Mapping extends Component {
             onPlacesChanged={this.handlePlacesChanged.bind(this)}
           />
 
-        <ToggleOverlay
-         setOverlay={this.handleSetOverlay}>
-        </ToggleOverlay>
+          <KmlLayer
+            options={{preserveViewport: true}}
+            url={this.state.overlay}
+          />
+
+
 
         </GoogleMap>
 
       } // googleMapElement
     /> 
+    <div className="data-area">
+
+    <ToggleOverlay
+      setOverlay={this.handleSetOverlay}>
+    </ToggleOverlay>
+
     <ClimateZoneLookup
       name="Climate Zone"
       zoneCode={this.state.zone.zoneCode}
@@ -177,6 +183,8 @@ class Mapping extends Component {
       zoneList={ClimateZoneLookup.zoneList}
       address={this.state.address}
     />
+    </div>
+  </div> 
   </div>
     ); // return
   } // render
