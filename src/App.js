@@ -7,6 +7,7 @@ import SearchBoxModule from './SearchBoxModule.js';
 import ClimateZoneLookup from './ClimateZoneLookup.js';
 import ToggleOverlay from './ToggleOverlay.js';
 import Header from './Header.js';
+import BottomText from './BottomText.js';
 
 
 
@@ -185,8 +186,10 @@ class Mapping extends Component {
     />
     </div>
   </div> 
+  <BottomText />
   </div>
-    ); // return
+  
+  ); // return
   } // render
 } //
 
