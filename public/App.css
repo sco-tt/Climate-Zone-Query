@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -13,7 +12,6 @@
   padding: 20px;
   color: white;
 }
-
 .App-intro {
   font-size: large;
 }
@@ -22,8 +20,48 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-.toggle-button {
-  position: absolute;
-  z-index: 999999;
+.main {
+  font-family: 'Open Sans', sans-serif;
+}
+.header {
+  background: #252525; 
+  display: flex;
+  flex-wrap: wrap;
+}
+.header__link {
+  color: #fff;
+  text-decoration: none;
+}
+.header__title,
+.header__menu {
+  flex: 0 0 100%;
+}
+.header__menu {
+  display: flex;
+  flex-grow: 2;
+  list-style-type: none;
+  padding: 0;
+}
+.header__link--menu {
+  padding: 5px 10px;
+  background: #9a9a9a;
+}
+.header__link--menu_last {
+  margin: 0 0 0 10px;
+}
+@media screen and (min-width: 768px) {
+  .header__title,
+  .header__menu {
+    flex: 1;
+  }
+}
+.row {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  display: flex;
+}
+.map {
+  width: 75%;
+  height: 400px;
 }

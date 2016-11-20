@@ -2,13 +2,15 @@ import React from 'react';
 
 const Header = (props) => {
   return (
-   <header className="nav">
-    <a className="nav__title" href="">What's My Climate Zone</a>
-    <ul className="nav__menu">
-      <li className="nav__menu-item">
-        <a href="https://github.com/sco-tt/What-s-My-Climate-Zone">Source Code</a></li>
-      <li className="nav__menu-item">
-        <a href="https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification">About the Köppen climate classification</a>
+   <header className="header">
+    <div className="header__title">
+      <h1><a className="header__link" href="">What's My Climate Zone</a></h1>
+    </div>
+    <ul className="header__menu">
+      <li className="header__menu-item">
+        <a className="header__link header__link--menu" href="https://github.com/sco-tt/What-s-My-Climate-Zone">Source Code</a></li>
+      <li className="header__menu-item">
+        <a className="header__link header__link--menu header__link--menu_last" href="https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification">About the Köppen climate classification</a>
       </li>
     </ul>
     </header>
