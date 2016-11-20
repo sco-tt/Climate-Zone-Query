@@ -18,6 +18,7 @@ class ToggleOverlay extends Component {
       <label>
         <input
           type="checkbox"
+          className="cz-toggle"
           checked={this.state.isChecked}
           onChange={this.onChange}
         />
@@ -25,7 +26,7 @@ class ToggleOverlay extends Component {
       </label>
     );
   }
-  
+
 }
 
 export default ToggleOverlay;

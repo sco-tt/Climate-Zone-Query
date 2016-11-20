@@ -8,7 +8,7 @@ const Header = (props) => {
     </div>
     <ul className="header__menu">
       <li className="header__menu-item">
-        <a className="header__link header__link--menu" href="https://github.com/sco-tt/What-s-My-Climate-Zone">Source Code</a></li>
+        <a className="header__link header__link--menu" href="https://github.com/sco-tt/Climate-Zone-Query">Source Code</a></li>
       <li className="header__menu-item">
         <a className="header__link header__link--menu header__link--menu_last" href="https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification">About the Köppen climate classification</a>
       </li>
