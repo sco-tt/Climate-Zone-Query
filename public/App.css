@@ -46,7 +46,7 @@ h1 {
 .header__menu {
   display: flex;
   flex-grow: 2;
-  justify-content: space-around;
+  justify-content: center;
   list-style-type: none;
   padding: 0;
   flex-wrap: wrap;
@@ -59,8 +59,10 @@ h1 {
   text-align: center;
 }
 .header__menu-item {
-  margin: 4px 0;
+  margin: 5px;
 }
+
+
 @media screen and (min-width: 768px) {
   .header__title,
   .header__menu {
@@ -83,13 +85,37 @@ h1 {
 }
 
 }
+
+/**
+ * Main Area
+ */
+
 .row {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   display: flex;
+  flex-wrap: wrap;
+}
+.map,
+.data-area {
+  flex: 0 0 100%;
 }
 .map {
-  width: 75%;
-  height: 400px;
+  width: 100%;
+  height: 300px;
+}
+.data-area {
+  padding: 1em;
+}
+
+
+@media screen and (min-width: 768px) {
+  .map {
+    flex: 3;
+    height: 500px;
+  }
+  .data-area {
+    flex: 1;
+  }
 }

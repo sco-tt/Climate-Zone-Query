@@ -7,11 +7,12 @@ class SearchBoxModule {
     'MozBoxSizing': `border-box`,
     'fontSize': `14px`,
     'height': `32px`,
-    'marginTop': `27px`,
+    'marginTop': `10px`,
     'outline': `none`,
     'padding': `0 12px`,
     'textOverflow': `ellipses`,
-    'width': `400px`,
+    'width': `70%`,
+    'marginLeft': `15%`,
     'max-width': `100%`
   }
   
