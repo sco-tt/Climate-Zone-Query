@@ -27,6 +27,13 @@
   background: #252525; 
   display: flex;
   flex-wrap: wrap;
+  padding: 0 .5em;
+}
+.header__title {
+  text-align: center;
+}
+h1 {
+  font-size: 1.5em;
 }
 .header__link {
   color: #fff;
@@ -39,21 +46,42 @@
 .header__menu {
   display: flex;
   flex-grow: 2;
+  justify-content: space-around;
   list-style-type: none;
   padding: 0;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
 }
 .header__link--menu {
   padding: 5px 10px;
   background: #9a9a9a;
+  display: block;
+  text-align: center;
 }
-.header__link--menu_last {
-  margin: 0 0 0 10px;
+.header__menu-item {
+  margin: 4px 0;
 }
 @media screen and (min-width: 768px) {
   .header__title,
   .header__menu {
     flex: 1;
+    margin: auto;
   }
+  .header__title {
+    flex: 1;
+    text-align: left;
+  }
+  .header__menu {
+    flex-grow: 2;
+    justify-content: flex-end;
+  }
+  .header__link--menu_last {
+    margin: 0 0 0 10px;
+  }
+  .header__menu-item {
+  margin: 0;
+}
+
 }
 .row {
   -webkit-box-flex: 1;
