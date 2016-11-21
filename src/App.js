@@ -170,20 +170,18 @@ class Mapping extends Component {
       } // googleMapElement
     /> 
     <div className="data-area">
-
-    <ToggleOverlay
-      setOverlay={this.handleSetOverlay}>
-    </ToggleOverlay>
-
-    <ClimateZoneLookup
-      name="Climate Zone"
-      zoneCode={this.state.zone.zoneCode}
-      zoneDesc={this.state.zone.zoneDesc}
-      setZone={this.handleSetZone} 
-      style={ClimateZoneLookup.style}
-      zoneList={ClimateZoneLookup.zoneList}
-      address={this.state.address}
-    />
+      <ClimateZoneLookup
+        name="Climate Zone"
+        zoneCode={this.state.zone.zoneCode}
+        zoneDesc={this.state.zone.zoneDesc}
+        setZone={this.handleSetZone}
+        style={ClimateZoneLookup.style}
+        zoneList={ClimateZoneLookup.zoneList}
+        address={this.state.address}
+      />
+      <ToggleOverlay
+        setOverlay={this.handleSetOverlay}>
+      </ToggleOverlay>
     </div>
   </div> 
   <BottomText />

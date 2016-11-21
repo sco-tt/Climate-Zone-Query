@@ -104,9 +104,9 @@ class ClimateZoneLookup extends Component {
   render() {
     return (
       <div className="climate-zone">
-        <h2>{this.props.name}</h2>
-        <div className="climate-zone__result"><span className="climate-zone__result-label">Climate Zone</span>: {this.props.zoneCode}</div>
-        <div className="climate-zone__result"><span className="climate-zone__result-label">Climate Zone Description</span>: {this.props.zoneDesc}</div>
+        <h2 className="climate-zone__title">{this.props.name}</h2>
+        <div className="climate-zone__result"><div className="climate-zone__result-label">Climate Zone</div>{this.props.zoneCode}</div>
+        <div className="climate-zone__result"><div className="climate-zone__result-label">Climate Zone Description</div>{this.props.zoneDesc}</div>
       </div>
     );
   }
