@@ -27,11 +27,11 @@ Technologies: This application is built with React.js, Google Fusion Tables, the
 
 This project depends on node.js and npm.
 
-  # make sure create-react-app is installed globally
-  npm install -g create-react-app
-  # Clone the repository
-  git clone git@github.com:sco-tt/Climate-Zone-Query.git my-climate-zone-query && cd my-climate-zone-query
-  # Install packages
-  npm install
-  # Run the application
-  npm start
+    # make sure create-react-app is installed globally
+    npm install -g create-react-app
+    # Clone the repository
+    git clone git@github.com:sco-tt/Climate-Zone-Query.git my-climate-zone-query && cd my-climate-zone-query
+    # Install packages
+    npm install
+    # Run the application
+    npm start
