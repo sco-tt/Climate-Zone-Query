@@ -28,5 +28,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:sco-tt/Climate-Zone-Query.git"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
