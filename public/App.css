@@ -119,6 +119,9 @@ h1 {
 .data-area {
   padding: 1em;
 }
+.hidden {
+  visibility: hidden;
+}
 
 
 @media screen and (min-width: 768px) {

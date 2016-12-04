@@ -94,7 +94,7 @@ class ClimateZoneLookup extends Component {
       .then((response) => {
         const tempZone = response.data.rows[0].toString();
         const tempDesc = this.props.zoneList[tempZone]
-        this.props.setZone(tempZone, tempDesc);
+        this.props.setZone(tempZone, tempDesc); 
       })
       .catch((error) => {
         console.log(error);
@@ -102,11 +102,21 @@ class ClimateZoneLookup extends Component {
   }
 
   render() {
+    const zoneCodeResult = this.props.zoneCode === null ? 'Climate Zone Code' : this.props.zoneCode;
+    const zoneDescResult = this.props.zoneDesc === null ? 'Climate Zone Description' : this.props.zoneDesc; 
+    const zondeCodeResultClass = this.props.zoneCode === null ? 'hidden' : ''; 
+    const zondeDescResultClass = this.props.zoneCode === null ? 'hidden' : ''; 
     return (
       <div className="climate-zone">
         <h2 className="climate-zone__title">{this.props.name}</h2>
-        <div className="climate-zone__result"><div className="climate-zone__result-label">Climate Zone</div>{this.props.zoneCode}</div>
-        <div className="climate-zone__result"><div className="climate-zone__result-label">Climate Zone Description</div>{this.props.zoneDesc}</div>
+        <div className="climate-zone__result">
+          <div className="climate-zone__result-label">Climate Zone</div>
+          <div className={zondeCodeResultClass}>{zoneCodeResult}</div>
+        </div>
+        <div className="climate-zone__result">
+          <div className="climate-zone__result-label">Climate Zone Description</div>
+          <div className={zondeDescResultClass}>{zoneDescResult}</div>
+        </div>
       </div>
     );
   }
