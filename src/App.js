@@ -102,7 +102,7 @@ class Mapping extends Component {
 
   handleSetOverlay() {
     const newOverlayState = (this.state.overlay) ? null : 
-      'https://sco-tt.github.io/What-s-My-Climate-Zone/Koeppen-Geiger-GE.kmz';
+      'https://sco-tt.github.io/Climate-Zone-Query/Koeppen-Geiger-GE.kmz';
     this.setState({
       overlay: newOverlayState,
     });
