@@ -1,0 +1,174 @@
+.App {
+  text-align: center;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.main {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5em;
+}
+.header {
+  background: #252525; 
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 .5em;
+}
+.header__title {
+  text-align: center;
+}
+h1 {
+  font-size: 1.5em;
+  margin: .25em 0;
+}
+.header__link {
+  color: #fff;
+  text-decoration: none;
+}
+.header__title,
+.header__menu {
+  flex: 0 0 100%;
+}
+.header__menu {
+  display: flex;
+  flex-grow: 2;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  flex-wrap: wrap;
+  margin: 0 0 5px;
+}
+.header__link--menu {
+  font-size: 12px;
+  line-height: 1em;
+  padding: 5px 10px;
+  background: #9a9a9a;
+  display: block;
+  text-align: center;
+}
+.header__menu-item {
+  margin: 5px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: .75em .5em;
+  }
+  .header__title,
+  .header__menu {
+    flex: 1;
+    margin: auto;
+  }
+  .header__title {
+    flex: 1;
+    text-align: left;
+  }
+  .header__menu {
+    flex-grow: 2;
+    justify-content: flex-end;
+  }
+  .header__link--menu {
+    font-size: 16px;
+  }
+  .header__link--menu_last {
+    margin: 0 0 0 10px;
+  }
+  .header__menu-item {
+  margin: 0;
+}
+
+}
+
+/**
+ * Main Area
+ */
+
+.row {
+  border-bottom: 2px solid #252525; 
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.map,
+.data-area {
+  flex: 0 0 100%;
+}
+.map {
+  width: 100%;
+  height: 25vh;
+}
+.data-area {
+  padding: 1em;
+}
+.hidden {
+  visibility: hidden;
+}
+
+
+@media screen and (min-width: 768px) {
+  .map {
+    flex: 3;
+    height: 85vh;
+  }
+  .data-area {
+    flex: 1;
+  }
+}
+/* Data Area*/
+.data-area {
+  padding: 0 1em;
+}
+.cz-toggle {
+  margin: 0 5px 0 0;
+}
+.climate-zone {
+  max-width: 90%;
+}
+.climate-zone__title {
+  margin: .25em 0;
+}
+.climate-zone__result-label {
+  font-weight: bold;
+}
+
+
+/* Bottom Area*/
+.bottomText {
+  padding: 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+.bottomText__faq {
+  flex: 0 0 100%;
+}
+.bottomText__link {
+  text-decoration: none;
+  background: #9a9a9a;
+  color: #fff;
+  padding: 2px 4px;
+}
+@media screen and (min-width: 768px) {
+  .bottomText__faq {
+    padding: 1em;
+    flex: 1;
+  }
+}
