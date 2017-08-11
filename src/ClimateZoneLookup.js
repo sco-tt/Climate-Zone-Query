@@ -83,12 +83,7 @@ class ClimateZoneLookup extends Component {
   }
 
   lookup(postion) {
-    const query = `SELECT 'Cls' FROM 1GQfBT-PXojUbIZP7_tkILYKNjHaQjYqop9gkosho 
-                   WHERE 'Lat' = ${postion.rounded[0]} 
-                   AND 'Lon' = ${postion.rounded[1]}`;
-    
-    const encodedQuery = encodeURIComponent(query);
-    const url = `https://www.googleapis.com/fusiontables/v2/query?sql=${encodedQuery}&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ`
+    const url = `http://climateapi.scottpinkelman.com/api/v1/location/${postion.rounded[0]}/${postion.rounded[1]}`
 
     axios.get(url)
       .then((response) => {
