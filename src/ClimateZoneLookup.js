@@ -87,8 +87,10 @@ class ClimateZoneLookup extends Component {
 
     axios.get(url)
       .then((response) => {
-        const tempZone = response.data.rows[0].toString();
-        const tempDesc = this.props.zoneList[tempZone]
+        const data = response.data.return_values[0];
+        console.log(data);
+        const tempZone = data.koppen_geiger_zone;
+        const tempDesc = data.zone_description;
         this.props.setZone(tempZone, tempDesc); 
       })
       .catch((error) => {
